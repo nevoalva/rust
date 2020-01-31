@@ -183,13 +183,16 @@ fn object_safety_violations_for_trait(
                     WHERE_CLAUSES_OBJECT_SAFETY,
                     hir::CRATE_HIR_ID,
                     *span,
-                    &format!(
-                        "the trait `{}` cannot be made into an object",
-                        tcx.def_path_str(trait_def_id)
-                    ),
-                )
-                .note(&violation.error_msg())
-                .emit();
+                    |lint| {
+                        lint.build(
+                        &format!(
+                            "the trait `{}` cannot be made into an object",
+                            tcx.def_path_str(trait_def_id)
+                        ))
+                        .note(&violation.error_msg())
+                        .emit()
+                    },
+                );
                 false
             } else {
                 true
