@@ -184,8 +184,7 @@ fn object_safety_violations_for_trait(
                     hir::CRATE_HIR_ID,
                     *span,
                     |lint| {
-                        lint.build(
-                        &format!(
+                        lint.build(&format!(
                             "the trait `{}` cannot be made into an object",
                             tcx.def_path_str(trait_def_id)
                         ))
