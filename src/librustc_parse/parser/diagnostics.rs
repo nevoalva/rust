@@ -1054,7 +1054,7 @@ impl<'a> Parser<'a> {
                     String::new(),
                     Applicability::MachineApplicable,
                 )
-                .emit()
+                .emit();
         }
     }
 
